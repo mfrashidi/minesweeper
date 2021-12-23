@@ -1,6 +1,6 @@
 # Minesweeper
 
-This game is completely written in the C++ with the help of the [CLUI](https://github.com/SBU-CE/clui) library to make it more beautiful and usable.
+This game is completely written in C++ with the help of the [CLUI](https://github.com/SBU-CE/clui) library to make it more beautiful and usable.
 
 ## Installation
 
