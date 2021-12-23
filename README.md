@@ -11,7 +11,7 @@ git clone https://github.com/Mfrashidi/Minesweeper.git && cd Minesweeper
 ```bash
 make game
 ```
-3. Enjoy :)
+3. Enjoy :rocket:
 ```
 ./play
 ```
@@ -49,7 +49,7 @@ make game
 | Change the setting      |&#8592; &#8594;|
 | Start the game      | ENTER      |
 
-## TODO
+## TODO :white_check_mark:
 - [ ] Add high score history
 - [ ] Test and Add Windows support
 
