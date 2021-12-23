@@ -17,6 +17,13 @@ make game
 ./play
 ```
 
+## Game modes
+
+- **Easy:** 5*5 table, 5 bombs
+- **Medium:** 10*10 table, 20 bombs
+- **Hard:** 15*15 table, 50 bombs
+- **Custom:** 5\*5-20\*20 table, 1-399 bombs, Show or hide cell numbers, Set time limit for the game 
+
 ## How to play
 **In-Menu**
 
