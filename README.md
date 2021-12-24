@@ -5,7 +5,7 @@ This game is completely written in C++ with the help of the [CLUI](https://githu
 
 1. Clone the repository
 ```bash
-git clone https://github.com/Mfrashidi/Minesweeper.git && cd Minesweeper
+git clone https://github.com/Mfrashidi/minesweeper.git && cd minesweeper
 ```
 2. Compile the game
 ```bash
