@@ -45,6 +45,7 @@ make game
 | Select a cell      | ENTER      |
 | Flag a cell      | SPACE      |
 | Restart the game      | R      |
+| Save the game      | S      |
 | Exit the game      | BACKSPACE      |
 
 **Custom Mode Settings**
