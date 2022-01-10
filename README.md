@@ -16,7 +16,12 @@ make game
 ```
 ./play
 ```
-
+## Features
+- Three basic modes + Custom mode
+- Unlimited Users
+- Unlimited save slots for each user
+- Leaderboard
+- Responsive to the window size
 ## Game modes
 
 - **Easy:** 5*5 table, 5 bombs
@@ -51,7 +56,7 @@ make game
 | Start the game      | ENTER      |
 
 ## TODO :white_check_mark:
-- [ ] Add high score history
+- [x] Add high score history
 - [ ] Test and Add Windows support
 
 ## Contributing
