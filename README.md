@@ -34,8 +34,9 @@ make game
 
 | Usage        | Key           |
 | ------------- |-------------|
-| Change the modes     | &#8593; &#8595; |
-| Select a mode      | ENTER      |
+| Change an item     | &#8593; &#8595; |
+| Select an item      | ENTER      |
+| Back      | BACKSPACE      |
 
 **In-Game**
 
