@@ -35,6 +35,7 @@ int GAME_MODE = 0;
 string SAVED_DATE;
 bool IS_LOADED_GAME;
 int SLOT;
+bool CHANGING_USERNAME = true;
 
 
 
@@ -483,6 +484,7 @@ void get_username(){
     while(true){
         clear_screen();
         init_header();
+        CHANGING_USERNAME = true;
         int row = (get_window_rows()-3)/2;
         int cols = get_window_cols();
         cursor_to_pos(row,(cols-20)/2);
@@ -499,6 +501,7 @@ void get_username(){
 
         input = getch();
         if(input==10&&size_of(USERNAME)!=0){
+            CHANGING_USERNAME = false;
             break;
         }else if(input==127){
             change_username(USERNAME,'r');
@@ -653,6 +656,11 @@ void init_header(){
     cursor_to_pos(5,(cols-13)/2);
     change_color(6);
     cout << "ITP Fall 1400";
+    if(!CHANGING_USERNAME){
+        cursor_to_pos(6,(cols-(13+strlen(USERNAME)))/2);
+        change_color(2);
+        cout << "Playing as (" << USERNAME << ")";
+    }
     change_color(0);
 }
 char int_to_char(int x){
@@ -1166,7 +1174,7 @@ void start_game(){
             else if(input==127){
                 REPEAT_GAME = false;
                 break;
-            }else if(input==83 || input==115){
+            }else if((input==83 || input==115)&&!IS_LOADED_GAME){
                 save_game();
                 REPEAT_GAME = false;
                 break;
