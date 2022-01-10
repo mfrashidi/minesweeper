@@ -405,13 +405,20 @@ void show_leaderboard(){
             cout << "Play some games and then return :)";
             change_color(0);
         }
-        cursor_to_pos(get_window_rows()-3, (get_window_cols()-27)/2);
+        cursor_to_pos(get_window_rows()-3, (get_window_cols()-31)/2);
+        change_color(ERRORS_COLOR);
+        cout << "Press R to reset the leaderboard";
+        cursor_to_pos(get_window_rows()-2, (get_window_cols()-27)/2);
         change_color(MENU_COLOR);
         cout << "Press ← to back to the menu";
         change_color(0);
         cursor_to_pos(0,0);
         input = getch();
         if(input==127) break;
+        if(input==114 || input==82){
+            remove("files/leaderboard.txt");
+            break;
+        }
     }
 
 }
