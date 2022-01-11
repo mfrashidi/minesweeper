@@ -36,7 +36,7 @@ string SAVED_DATE;
 bool IS_LOADED_GAME;
 int SLOT;
 bool CHANGING_USERNAME = true;
-string KEY = "DONT EVEN THINK ABOU IT";
+string KEY = "DONT EVEN THINK ABOUT IT";
 
 
 
