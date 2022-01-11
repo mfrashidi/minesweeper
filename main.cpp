@@ -1162,6 +1162,10 @@ void start_game(){
         input = getch();
         cursor_to_pos(0,0);
         if(IS_LOADED_GAME && !IS_WON && !IS_LOST && !LOST_BY_TIME) save_game(SLOT);
+        if(START_TIME-time(0)<=0 && IS_TIMING){
+             LOST_BY_TIME=true;
+             end_game();
+        }
         if(!IS_LOST && !IS_WON && !LOST_BY_TIME){
             if(MESSAGE_SHOWN) clear_message();
             if(input==10) select(SELECTED_ITEM[0],SELECTED_ITEM[1]);
