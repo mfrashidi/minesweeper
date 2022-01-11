@@ -16,7 +16,12 @@ make game
 ```
 ./play
 ```
-
+## Features
+- Three basic modes + Custom mode
+- Unlimited Users
+- Unlimited save slots for each user
+- Leaderboard
+- Responsive to the window size
 ## Game modes
 
 - **Easy:** 5*5 table, 5 bombs
@@ -29,8 +34,9 @@ make game
 
 | Usage        | Key           |
 | ------------- |-------------|
-| Change the modes     | &#8593; &#8595; |
-| Select a mode      | ENTER      |
+| Change an item     | &#8593; &#8595; |
+| Select an item      | ENTER      |
+| Back      | BACKSPACE      |
 
 **In-Game**
 
@@ -40,6 +46,7 @@ make game
 | Select a cell      | ENTER      |
 | Flag a cell      | SPACE      |
 | Restart the game      | R      |
+| Save the game      | S      |
 | Exit the game      | BACKSPACE      |
 
 **Custom Mode Settings**
@@ -51,7 +58,7 @@ make game
 | Start the game      | ENTER      |
 
 ## TODO :white_check_mark:
-- [ ] Add high score history
+- [x] Add high score history
 - [ ] Test and Add Windows support
 
 ## Contributing
