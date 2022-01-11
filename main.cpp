@@ -36,6 +36,7 @@ string SAVED_DATE;
 bool IS_LOADED_GAME;
 int SLOT;
 bool CHANGING_USERNAME = true;
+string KEY = "DONT EVEN THINK ABOU IT";
 
 
 
@@ -76,21 +77,23 @@ void change_position(int input);//Change the position based on the user's input
 void start_game();//Start a new game
 void end_game();//End the current game
 void update_footer();//Update the details in the footer
-void select_game();
-void get_username();
-void change_usernmae();
-int size_of();
-void add_score(int score);
-int get_score(const char* line);
-void show_leaderboard();
-bool is_file_exist(const char *file);
-char* substring(char* s, int begin, int size);
-int char_to_int(char* s);
-void load_game();
-void load_slot(int slot);
-void save_game(int slot=0);
-const string current_time();
-void remove_slot(int slot);
+void select_game();//Select a saved game
+void get_username();//Get username from user :)
+void change_username();//Change the username
+int size_of();//Get length of the username
+void add_score(int score);//Add score to the username
+int get_score(const char* line);//Get score of a username
+void show_leaderboard();//Show leaderboard from a file
+bool is_file_exist(const char *file);//Check if a file exists or not
+char* substring(char* s, int begin, int size);//Get part of a string
+int char_to_int(char* s);//Return int value of an int character
+void load_game();//Saved game menu
+void load_slot(int slot);//Load a specific save slot
+void save_game(int slot=0);//Save this game
+const string current_time();//Get current time
+void remove_slot(int slot);//Remove a save slot
+string encrypt(string msg);//Encrypt a string with a key
+void secure(string file_name);//Secure a file to prevent cheating
 
 int main(){
     srand(time(0));
@@ -149,6 +152,36 @@ int main(){
     
 }
 
+
+string encrypt(string msg){
+    string key = KEY;
+    string tmp(key);
+    while (key.size() < msg.size())
+        key += tmp;
+    for (string::size_type i = 0; i < msg.size(); ++i)
+        msg[i] ^= key[i];
+    return msg;
+}
+void secure(string file_name){
+    ifstream file(file_name);
+    ofstream tmp_file("tmp");
+    string line;
+    while(getline(file,line)){
+        tmp_file << encrypt(line) << endl;
+    }
+    file.close();
+    tmp_file.close();
+
+    ofstream file2(file_name);
+    ifstream tmp_file2("tmp");
+    while(getline(tmp_file2,line)){
+        file2 << line << endl;
+    }
+    file2.close();
+    tmp_file2.close();
+    remove("tmp");
+}
+
 const string current_time() {
     time_t now = time(0);
     struct tm tstruct;
@@ -173,6 +206,7 @@ void remove_slot(int slot){
 }
 
 void load_slot(int slot){
+    secure(string("files/")+string(USERNAME)+string("_save_")+to_string(slot)+string(".txt"));
     ifstream save_slot(string("files/")+string(USERNAME)+string("_save_")+to_string(slot)+string(".txt"));
     string line;
     int i = 0;
@@ -229,6 +263,7 @@ void load_slot(int slot){
         i++;
     }
     save_slot.close();
+    secure(string("files/")+string(USERNAME)+string("_save_")+to_string(slot)+string(".txt"));
     WIDTH_SPACE = (get_window_cols()-(SIZE*5-(SIZE-1)+DEFAULT_SPACE))/2;
     HEIGHT_SPACE = ((get_window_rows()-2)-(SIZE*2+2))/2;
     SELECTED_ITEM[0] = SELECTED_ITEM[1] = SIZE/2;
@@ -330,6 +365,7 @@ void save_game(int slot){
     }
     save_slot << "\n";
     save_slot.close();
+    secure(string("files/")+string(USERNAME)+string("_save_")+to_string(slot)+string(".txt"));
 }
 char* substring(const char* s, int begin, int size){ 
     char* news = new char[size+1];
