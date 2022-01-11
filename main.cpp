@@ -1054,17 +1054,58 @@ void select(int i, int j){
     if(table[i][j]==DEFAULT_CHAR){
         int nearMines = mines_nearby(i,j);
         int nearFlags = flags_nearby(i,j);
-        if(nearMines==0&&nearFlags==0){
-            if(j-1>=0 && table[i][j-1]==DEFAULT_CHAR){table[i][j-1] = int_to_char(mines_nearby(i,j-1));SCORE++;}
-            if(j+1<=SIZE-1 && table[i][j+1]==DEFAULT_CHAR){table[i][j+1] = int_to_char(mines_nearby(i,j+1));SCORE++;}
-            if(i-1>=0 && table[i-1][j]==DEFAULT_CHAR){table[i-1][j] = int_to_char(mines_nearby(i-1,j));SCORE++;}
-            if(i+1<=SIZE-1 && table[i+1][j]==DEFAULT_CHAR){table[i+1][j] = int_to_char(mines_nearby(i+1,j));SCORE++;}
-            if(j-1>=0 && i-1>=0 && table[i-1][j-1]==DEFAULT_CHAR){table[i-1][j-1] = int_to_char(mines_nearby(i-1,j-1));SCORE++;}
-            if(j+1<=SIZE-1 && i+1<=SIZE-1 && table[i+1][j+1]==DEFAULT_CHAR){table[i+1][j+1] = int_to_char(mines_nearby(i+1,j+1));SCORE++;}
-            if(j+1<=SIZE-1 && i-1>=0 && table[i-1][j+1]==DEFAULT_CHAR){table[i-1][j+1] = int_to_char(mines_nearby(i-1,j+1));SCORE++;}
-            if(j-1>=0 && i+1<=SIZE-1 && table[i+1][j-1]==DEFAULT_CHAR){table[i+1][j-1] = int_to_char(mines_nearby(i+1,j-1));SCORE++;}
-        }
         table[i][j] = int_to_char(nearMines);
+        if(nearMines==0&&nearFlags==0){
+            if(j-1>=0 && table[i][j-1]==DEFAULT_CHAR){
+                if(mines_nearby(i,j-1)==0) select(i,j-1);
+                if(table[i][j-1]==DEFAULT_CHAR){
+                    table[i][j-1] = int_to_char(mines_nearby(i,j-1));
+                    SCORE++;
+                }
+            }if(j+1<=SIZE-1 && table[i][j+1]==DEFAULT_CHAR){
+                if(mines_nearby(i,j+1)==0) select(i,j+1);
+                if(table[i][j+1]==DEFAULT_CHAR){
+                    table[i][j+1] = int_to_char(mines_nearby(i,j+1));
+                    SCORE++;
+                }
+            }if(i-1>=0 && table[i-1][j]==DEFAULT_CHAR){
+                if(mines_nearby(i-1,j)==0) select(i-1,j);
+                if(table[i-1][j]==DEFAULT_CHAR){
+                    table[i-1][j] = int_to_char(mines_nearby(i-1,j));
+                    SCORE++;
+                }
+            }if(i+1<=SIZE-1 && table[i+1][j]==DEFAULT_CHAR){
+                if(mines_nearby(i+1,j)==0) select(i+1,j);
+                if(table[i+1][j]==DEFAULT_CHAR){
+                    table[i+1][j] = int_to_char(mines_nearby(i+1,j));
+                    SCORE++;
+                }
+            }if(j-1>=0 && i-1>=0 && table[i-1][j-1]==DEFAULT_CHAR){
+                if(mines_nearby(i-1,j-1)==0) select(i-1,j-1);
+                if(table[i-1][j-1]==DEFAULT_CHAR){
+                    table[i-1][j-1] = int_to_char(mines_nearby(i-1,j-1));
+                    SCORE++;
+                }
+            }if(j+1<=SIZE-1 && i+1<=SIZE-1 && table[i+1][j+1]==DEFAULT_CHAR){
+                if(mines_nearby(i+1,j+1)==0) select(i+1,j+1);
+                if(table[i+1][j+1]==DEFAULT_CHAR){
+                    table[i+1][j+1] = int_to_char(mines_nearby(i+1,j+1));
+                    SCORE++;
+                }
+            }if(j+1<=SIZE-1 && i-1>=0 && table[i-1][j+1]==DEFAULT_CHAR){
+                if(mines_nearby(i-1,j+1)==0) select(i-1,j+1);
+                if(table[i-1][j+1]==DEFAULT_CHAR){
+                    table[i-1][j+1] = int_to_char(mines_nearby(i-1,j+1));
+                    SCORE++;
+                }
+            }if(j-1>=0 && i+1<=SIZE-1 && table[i+1][j-1]==DEFAULT_CHAR){
+                if(mines_nearby(i+1,j-1)==0) select(i+1,j-1);
+                if(table[i+1][j-1]==DEFAULT_CHAR){
+                    table[i+1][j-1] = int_to_char(mines_nearby(i+1,j-1));
+                    SCORE++;
+                }
+            }
+        }
         SCORE++;
         print_table();
     }else if(table[i][j]==FLAG_CHAR){
