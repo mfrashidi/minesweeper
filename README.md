@@ -20,6 +20,7 @@ make game
 - Three basic modes + Custom mode
 - Unlimited Users
 - Unlimited save slots for each user
+- Encrypted save slots to prevent cheating :lock:
 - Leaderboard
 - Responsive to the window size
 ## Game modes
