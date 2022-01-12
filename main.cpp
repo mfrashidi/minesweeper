@@ -234,10 +234,10 @@ void load_slot(int slot){
             int j = 0;
             while(j<MINES){
                 if(line[k]==','){
-                    MINES_LOCATION[i][0]=x;
+                    MINES_LOCATION[j][0]=x;
                     first = false;
                 }else if(line[k]=='/'){
-                    MINES_LOCATION[i][1]=y;
+                    MINES_LOCATION[j][1]=y;
                     x = 0;
                     y = 0;
                     j++;
@@ -844,8 +844,6 @@ void initial(){
         i = rand()%(SIZE);
         j = rand()%(SIZE);
         if(table[i][j]==DEFAULT_CHAR){
-            //cursor_to_pos(n+1,0);
-            //cout << "[" << i << "][" << j << "]";
             MINES_LOCATION[n][0]=i;
             MINES_LOCATION[n][1]=j;
             table[i][j] = MINE_CHAR;
