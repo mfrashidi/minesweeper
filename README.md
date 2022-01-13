@@ -1,6 +1,6 @@
 ![An example of the game](Example.gif)
 # Minesweeper
-This game is completely written in C++ with the help of the [CLUI](https://github.com/SBU-CE/clui) library to make it more beautiful and usable.
+This game is completely written in C++ with the help of the [CLUI](https://github.com/SBU-CE/clui) library to make it more beautiful and usable. I created this game for my final project of the ITP class.
 > [Graphical version](https://github.com/mfrashidi/minesweeper-gui)
 ## Installation
 
